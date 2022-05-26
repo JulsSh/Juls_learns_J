@@ -1,0 +1,12 @@
+apply plugin: 'java'
+
+
+repositories{
+    mavenCentral()
+}
+dependencies {
+    implementation 'org.testng:testng:7.6.0'
+}
+
+
+
