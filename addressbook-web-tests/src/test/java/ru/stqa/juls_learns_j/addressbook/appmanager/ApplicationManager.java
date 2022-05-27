@@ -2,7 +2,6 @@ package ru.stqa.juls_learns_j.addressbook.appmanager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -12,14 +11,7 @@ public class ApplicationManager {
   private   NavigationManager navigationManager;
   private GroupHelper groupHelper;
 
-  public boolean isAlertPresent(WebDriver wd) {
-    try {
-      wd.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
+
   public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
