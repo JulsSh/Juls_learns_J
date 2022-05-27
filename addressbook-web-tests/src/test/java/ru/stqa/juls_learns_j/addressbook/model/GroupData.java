@@ -1,9 +1,9 @@
-package ru.stqa.juls_learns_j.addressbook;
+package ru.stqa.juls_learns_j.addressbook.model;
 
 public class GroupData {
-  private final String groupName;
-  private final String groupHeader;
-  private final String groupFooter;
+  public  String groupName;
+  public  String groupHeader;
+  public  String groupFooter;
 
   public GroupData(String groupName, String groupHeader, String groupFooter) {
     this.groupName = groupName;

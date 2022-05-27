@@ -1,4 +1,4 @@
-package ru.stqa.juls_learns_j.addressbook;
+package ru.stqa.juls_learns_j.addressbook.model;
 
 public class UserData {
   private final String firstName;

@@ -1,9 +1,10 @@
-package ru.stqa.juls_learns_j.addressbook;
+package ru.stqa.juls_learns_j.addressbook.tests;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.stqa.juls_learns_j.addressbook.model.UserData;
 
 public class UserCreationTest {
   private WebDriver wd;
