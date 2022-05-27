@@ -8,7 +8,7 @@ public class ApplicationManager {
 
   WebDriver wd;
   private SessionHelper sessionHelper;
-  private   NavigationManager navigationManager;
+  private NavigationManager navigationManager;
   private GroupHelper groupHelper;
 
 
