@@ -1,6 +1,6 @@
 package ru.stqa.juls_learns_j.addressbook.tests;
+
 import org.testng.annotations.Test;
-import ru.stqa.juls_learns_j.addressbook.TestBase;
 
 public class GroupDeletionTest extends TestBase {
 

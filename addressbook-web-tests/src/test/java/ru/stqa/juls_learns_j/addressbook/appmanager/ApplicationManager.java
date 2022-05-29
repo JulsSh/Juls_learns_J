@@ -10,6 +10,7 @@ public class ApplicationManager {
   private SessionHelper sessionHelper;
   private NavigationManager navigationManager;
   private GroupHelper groupHelper;
+  private UserHelper userHelper;
 
 
   public void init() {
@@ -17,13 +18,11 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
    wd.get("http://localhost/addressbook/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
+    userHelper =new UserHelper(wd);
     navigationManager = new NavigationManager(wd);
     sessionHelper=new SessionHelper(wd);
     sessionHelper.login("admin","secret");
   }
-
-
-
 
   public void logout() {
    wd.findElement(By.linkText("Logout")).click();
@@ -39,5 +38,9 @@ public class ApplicationManager {
 
   public NavigationManager getNavigationManager() {
     return navigationManager;
+  }
+
+  public UserHelper getUserHelper() {
+    return userHelper;
   }
 }

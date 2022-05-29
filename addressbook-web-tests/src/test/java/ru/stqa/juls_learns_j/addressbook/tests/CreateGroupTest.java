@@ -1,6 +1,6 @@
 package ru.stqa.juls_learns_j.addressbook.tests;
 import org.testng.annotations.*;
-import ru.stqa.juls_learns_j.addressbook.TestBase;
+
 import ru.stqa.juls_learns_j.addressbook.model.GroupData;
 
 public class CreateGroupTest extends TestBase {

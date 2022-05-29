@@ -1,4 +1,4 @@
-package ru.stqa.juls_learns_j.addressbook;
+package ru.stqa.juls_learns_j.addressbook.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
