@@ -3,6 +3,7 @@ package ru.stqa.juls_learns_j.addressbook.model;
 public class UserData {
   private final String firstName;
   private final String middleName;
+  private String group;
   private final String lastName;
   private final String nickname;
   private final String title;
@@ -12,9 +13,10 @@ public class UserData {
   private final String mobileNumber;
   private final String workNumber;
 
-  public UserData(String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String hoPhoneNum, String mobileNumber, String workNumber) {
+  public UserData(String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String hoPhoneNum, String mobileNumber, String workNumber, String group) {
     this.firstName = firstName;
     this.middleName = middleName;
+    this.group = group;
     this.lastName = lastName;
     this.nickname = nickname;
     this.title = title;
@@ -23,6 +25,7 @@ public class UserData {
     this.hoPhoneNum = hoPhoneNum;
     this.mobileNumber = mobileNumber;
     this.workNumber = workNumber;
+
   }
 
   public String getFirstName() {
@@ -63,5 +66,9 @@ public class UserData {
 
   public String getWorkNumber() {
     return workNumber;
+  }
+
+  public String getGroup() {
+    return group;
   }
 }
