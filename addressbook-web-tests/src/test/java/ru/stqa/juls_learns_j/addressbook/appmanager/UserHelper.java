@@ -31,4 +31,7 @@ public class UserHelper extends HeplperBase {
   }
 
 
+
+  public void editUserDetails(UserData userData) {
+  }
 }
