@@ -6,6 +6,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import ru.stqa.juls_learns_j.addressbook.model.GroupData;
 import ru.stqa.juls_learns_j.addressbook.model.UserData;
 
 import static org.testng.Assert.assertTrue;
@@ -18,23 +19,23 @@ public class UserHelper extends HeplperBase {
   }
 
   public void fillUserDetails(UserData userData, boolean creation) {
-   click(By.linkText("add new"));
-   type(By.name("firstname"), userData.getFirstName());
-   type(By.name("middlename"), userData.getMiddleName());
-   type(By.name("lastname"), userData.getLastName());
-   type(By.name("nickname"), userData.getNickname());
-   type(By.name("title"), userData.getTitle());
-   type(By.name("company"), userData.getCompany());
-   type(By.name("address"), userData.getAddress());
-   type(By.name("home"), userData.getHoPhoneNum());
-   type(By.name("mobile"),userData.getMobileNumber());
-   type(By.name("work"), userData.getWorkNumber());
+    click(By.linkText("add new"));
+    type(By.name("firstname"), userData.getFirstName());
+    type(By.name("middlename"), userData.getMiddleName());
+    type(By.name("lastname"), userData.getLastName());
+    type(By.name("nickname"), userData.getNickname());
+    type(By.name("title"), userData.getTitle());
+    type(By.name("company"), userData.getCompany());
+    type(By.name("address"), userData.getAddress());
+    type(By.name("home"), userData.getHoPhoneNum());
+    type(By.name("mobile"), userData.getMobileNumber());
+    type(By.name("work"), userData.getWorkNumber());
 
-   if (creation){
-     new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
-   } else {
-     Assert.assertFalse(isElementPresent(By.name("new_group")));
-   }
+    if (creation) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
+    }
 
 
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
@@ -45,13 +46,12 @@ public class UserHelper extends HeplperBase {
   }
 
 
-
   public void editUserDetails(UserData userData, boolean b) {
   }
 
   public void selectUser() {
-    wd.findElement(By.id("2")).click();
-   //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    wd.findElement(By.id("1")).click();
+    //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
   public void deleteSelectedUser() {
@@ -59,6 +59,7 @@ public class UserHelper extends HeplperBase {
     wd.findElement(By.xpath("//input[@value='Delete']")).click();
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
   }
+
   private String closeAlertAndGetItsText() {
     boolean acceptNextAlert = false;
     try {
@@ -73,5 +74,13 @@ public class UserHelper extends HeplperBase {
     } finally {
       acceptNextAlert = true;
     }
+  }
+
+  public boolean isThereAUser() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void createNewUser(UserData user, boolean b) {
+    fillUserDetails(user, true);
   }
 }
