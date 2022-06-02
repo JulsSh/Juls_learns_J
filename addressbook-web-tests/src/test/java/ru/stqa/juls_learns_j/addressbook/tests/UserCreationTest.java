@@ -10,6 +10,6 @@ public class UserCreationTest extends TestBase {
 
   @Test
   public void testUserCreation() throws Exception {
-    app.getUserHelper().fillUserDetails(new UserData("Juls", "jennifer", "juli", "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C", "012345", "1791028611", "010 345845", "juli"), true);
+    app.getUserHelper().fillUserDetails(new UserData("Juls", "jennifer", "juli", "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C", "012345", "1791028611", "010 345845", "test1"), true);
   }
 }

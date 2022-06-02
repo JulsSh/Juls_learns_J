@@ -1,11 +1,14 @@
 package ru.stqa.juls_learns_j.addressbook.appmanager;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.juls_learns_j.addressbook.model.UserData;
+
+import static org.testng.Assert.assertTrue;
 
 public class UserHelper extends HeplperBase {
 
@@ -37,12 +40,38 @@ public class UserHelper extends HeplperBase {
     wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
-  protected void gotoUsers(By mainForm) {
-    wd.findElement(mainForm).click();
+  public void gotoUsers() {
+    wd.findElement(By.linkText("home")).click();
   }
 
 
 
   public void editUserDetails(UserData userData, boolean b) {
+  }
+
+  public void selectUser() {
+    wd.findElement(By.id("2")).click();
+   //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+  }
+
+  public void deleteSelectedUser() {
+    boolean acceptNextAlert = true;
+    wd.findElement(By.xpath("//input[@value='Delete']")).click();
+    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+  }
+  private String closeAlertAndGetItsText() {
+    boolean acceptNextAlert = false;
+    try {
+      Alert alert = wd.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
   }
 }
