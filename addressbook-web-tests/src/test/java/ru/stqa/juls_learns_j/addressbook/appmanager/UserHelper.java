@@ -50,7 +50,7 @@ public class UserHelper extends HeplperBase {
   }
 
   public void selectUser() {
-    wd.findElement(By.id("1")).click();
+    wd.findElement(By.name("selected[]")).click();
     //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
