@@ -80,7 +80,7 @@ public class UserHelper extends HeplperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void createNewUser(UserData user, boolean b) {
-    fillUserDetails(user, true);
+  public void createNewUser(UserData user) {
+    fillUserDetails(user, false);
   }
 }
