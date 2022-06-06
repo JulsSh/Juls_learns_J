@@ -18,8 +18,12 @@ public class UserHelper extends HeplperBase {
     super(wd);
   }
 
-  public void fillUserDetails(UserData userData, boolean creation) {
+
+  public void initUserCreation()  {
     click(By.linkText("add new"));
+  }
+  public void fillUserDetails(UserData userData, boolean creation) {
+
     type(By.name("firstname"), userData.getFirstName());
     type(By.name("middlename"), userData.getMiddleName());
     type(By.name("lastname"), userData.getLastName());
@@ -36,22 +40,20 @@ public class UserHelper extends HeplperBase {
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-
-
-    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+  }
+  public void submitUseCreation(){
+    click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
   public void gotoUsers() {
     wd.findElement(By.linkText("home")).click();
   }
 
-
   public void editUserDetails(UserData userData, boolean b) {
   }
 
   public void selectUser() {
     wd.findElement(By.name("selected[]")).click();
-    //wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
   public void deleteSelectedUser() {
@@ -81,6 +83,6 @@ public class UserHelper extends HeplperBase {
   }
 
   public void createNewUser(UserData user) {
-    fillUserDetails(user, false);
+    fillUserDetails(user, true);
   }
 }
