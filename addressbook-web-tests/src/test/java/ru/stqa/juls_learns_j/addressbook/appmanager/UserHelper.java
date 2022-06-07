@@ -2,17 +2,14 @@ package ru.stqa.juls_learns_j.addressbook.appmanager;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import ru.stqa.juls_learns_j.addressbook.model.GroupData;
 import ru.stqa.juls_learns_j.addressbook.model.UserData;
 
 import static org.testng.Assert.assertTrue;
 
 public class UserHelper extends HeplperBase {
-
 
   public UserHelper(WebDriver wd) {
     super(wd);
@@ -36,20 +33,22 @@ public class UserHelper extends HeplperBase {
     type(By.name("work"), userData.getWorkNumber());
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+      if(!wd.findElement(By.name("new_group")).getAttribute("value").equals("none")){
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+      }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
-  public void submitUseCreation(){
+  public void submitUserCreation(){
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
   public void gotoUsers() {
     wd.findElement(By.linkText("home")).click();
   }
-
-  public void editUserDetails(UserData userData, boolean b) {
+  public void editSelectedUser(){
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[7]/td[8]/a/img")).click();
   }
 
   public void selectUser() {
@@ -83,6 +82,12 @@ public class UserHelper extends HeplperBase {
   }
 
   public void createNewUser(UserData user) {
+    initUserCreation();
     fillUserDetails(user, true);
+    submitUserCreation();
+  }
+
+  public void submitUserModification() {
+    wd.findElement(By.xpath("//div[@id='content']/form/input[22]")).click();
   }
 }
