@@ -6,6 +6,13 @@ import ru.stqa.juls_learns_j.addressbook.model.UserData;
 public class UserModificationTest extends TestBase{
   @Test
   public void  modifyUser(){
+    if(!app.getUserHelper().isThereAUser()){
+      app.getNavigationManager().goToHomePage();
+      app.getUserHelper().createNewUser(new UserData("Julia",
+              "SH","k","hh","zu","op",
+              "Ta","123","123","98",null
+              ));
+    }
 app.getNavigationManager().goToHomePage();
 app.getUserHelper().selectUser();
     app.getUserHelper().editSelectedUser();
