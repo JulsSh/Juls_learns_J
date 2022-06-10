@@ -3,7 +3,7 @@ package ru.stqa.juls_learns_j.addressbook.model;
 public class UserData {
   private final String firstName;
   private final String middleName;
-  private String group;
+  private final String group;
   private final String lastName;
   private final String nickname;
   private final String title;
