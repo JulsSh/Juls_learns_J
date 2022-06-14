@@ -1,6 +1,5 @@
 package ru.stqa.juls_learns_j.addressbook.appmanager;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -36,7 +35,7 @@ public class UserHelper extends HeplperBase {
     if (creation) {
       if(!wd.findElement(By.name("new_group")).getAttribute("value").equals("none")){
         new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
-      }
+              }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -60,22 +59,6 @@ public class UserHelper extends HeplperBase {
     boolean acceptNextAlert = true;
     wd.findElement(By.xpath("//input[@value='Delete']")).click();
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
-  }
-
-  private String closeAlertAndGetItsText() {
-    boolean acceptNextAlert = false;
-    try {
-      Alert alert = wd.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
   }
 
   public boolean isThereAUser() {
