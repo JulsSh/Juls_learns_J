@@ -3,6 +3,8 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 import ru.stqa.juls_learns_j.addressbook.model.GroupData;
+
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -32,7 +34,10 @@ public class CreateGroupTest extends TestBase {
     //Comparator<? super GroupData> byId= (Comparator<GroupData>) (o1, o2) -> Integer.compare(o1.getId(), o2.getId());
     group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
      before.add(group);
-    Assert.assertEquals(new HashSet<>(before), new HashSet<>(after));
+    Comparator<? super GroupData> byId =(g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    Assert.assertEquals(before, after);
   }
 
 }
