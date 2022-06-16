@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class UserModificationTest extends TestBase{
-  @Test
+  @Test(enabled = false)
   public void  modifyUser(){
     app.getUserHelper().gotoUsers();
     List<UserData> before =app.getUserHelper().getUserList();

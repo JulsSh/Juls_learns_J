@@ -11,7 +11,7 @@ import java.util.List;
 public class UserCreationTest extends TestBase {
 
 
-  @Test
+  @Test (enabled = false)
   public void testUserCreation() throws Exception {
     app.getUserHelper().gotoUsers();
     List<UserData> before =app.getUserHelper().getUserList();

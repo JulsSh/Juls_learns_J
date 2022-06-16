@@ -11,7 +11,7 @@ import java.util.List;
 public class UserDeletionTest extends TestBase{
   private String id;
 
-  @Test (enabled=false)
+  @Test(enabled = false)
 
 
   public void  deleteUser(){
