@@ -57,7 +57,13 @@ public class GroupHelper extends HeplperBase{
    submitGroupCreation();
    returnToGroupPage();
   }
-
+  public void modifiyGroup(int index, GroupData group) {
+    selectGroup(index);
+    initGroupModification();
+    fillGroupInfo(group);
+    submitGroupModification();
+    returnToGroupPage();
+  }
   public boolean isThereAgroup() {
     return isElementPresent(By.name("selected[]"));
   }
