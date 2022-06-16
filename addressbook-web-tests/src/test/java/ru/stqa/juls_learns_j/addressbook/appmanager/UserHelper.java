@@ -2,9 +2,13 @@ package ru.stqa.juls_learns_j.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.juls_learns_j.addressbook.model.UserData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
@@ -80,5 +84,18 @@ public void submitUserModification() {
 
   public int getUserCount() {
     return wd.findElements(By.name("selected[]")).size();
+  }
+
+  public List<UserData> getUserList() {
+    List<UserData> users = new ArrayList<UserData>();
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
+    for (WebElement element: elements){
+      String FirstNname =element.findElement(By.xpath(".//td[3]")).getText();
+      String LastNname=element.findElement(By.xpath(".//td[2]")).getText();
+      int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      UserData user =new UserData(id, FirstNname, "test1", LastNname, "nick3", "title4", "company 5", "address6", "123", "124", "126", "[none]");
+      users.add(user);
+    }
+    return users;
   }
 }
