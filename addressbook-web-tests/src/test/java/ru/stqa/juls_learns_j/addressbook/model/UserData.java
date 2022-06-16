@@ -38,8 +38,11 @@ public class UserData {
     this.workNumber = workNumber;
 
   }
-  public UserData( String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String hoPhoneNum, String mobileNumber, String workNumber, String group) {
-    this.id = 0;
+
+
+
+  public UserData(String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String hoPhoneNum, String mobileNumber, String workNumber, String group) {
+    this.id = Integer.MAX_VALUE;
     this.firstName = firstName;
     this.middleName = middleName;
     this.group = group;
@@ -108,18 +111,16 @@ public class UserData {
             ", lastName='" + lastName + '\'' +
             '}';
   }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     UserData userData = (UserData) o;
-    return id == userData.id && Objects.equals(firstName, userData.firstName) && Objects.equals(lastName, userData.lastName);
+    return Objects.equals(firstName, userData.firstName) && Objects.equals(lastName, userData.lastName);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName);
+    return Objects.hash(firstName, lastName);
   }
-
 }
