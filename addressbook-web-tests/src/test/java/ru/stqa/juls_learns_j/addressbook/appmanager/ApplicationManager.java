@@ -8,8 +8,6 @@ import org.openqa.selenium.remote.BrowserType;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.openqa.selenium.remote.Browser.FIREFOX;
-
 public class ApplicationManager {
 
   WebDriver wd;
@@ -51,11 +49,11 @@ public class ApplicationManager {
   }
 
 
-  public GroupHelper getGroupHelper() {
+  public GroupHelper group() {
     return groupHelper;
   }
 
-  public NavigationManager getNavigationManager() {
+  public NavigationManager goTo() {
     return navigationManager;
   }
 

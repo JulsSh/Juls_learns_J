@@ -4,9 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.juls_learns_j.addressbook.model.UserData;
 
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class UserModificationTest extends TestBase{
@@ -21,7 +19,7 @@ public class UserModificationTest extends TestBase{
               "Ta","123","123","98",null
               ));
     }
-    app.getNavigationManager().goToHomePage();
+    app.goTo().goToHomePage();
     app.getUserHelper().selectUser(before.size()-1);
     app.getUserHelper().editSelectedUser();
     UserData user =new UserData(before.get(before.size()-1).getId(),"JulsHHH", "jennifer", "juli",
