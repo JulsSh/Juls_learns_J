@@ -47,18 +47,22 @@ public class UserHelper extends HeplperBase {
   public void gotoUsers() {
     wd.findElement(By.linkText("home")).click();
   }
+
   public void editSelectedUser(){
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[7]/td[8]/a/img")).click();
+    wd.findElement(By.xpath("//img[@alt='Edit']")).click();
   }
 
-  public void selectUser() {
-    wd.findElement(By.name("selected[]")).click();
+  public void selectUser(int index) {
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void deleteSelectedUser() {
     boolean acceptNextAlert = true;
     wd.findElement(By.xpath("//input[@value='Delete']")).click();
-    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+    //assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+  }
+  public void acceptAlert(){
+    wd.switchTo().alert().accept();
   }
 
   public boolean isThereAUser() {
@@ -70,10 +74,11 @@ public class UserHelper extends HeplperBase {
     fillUserDetails(user, true);
     submitUserCreation();
   }
-
-
-
-  public void submitUserModification() {
+public void submitUserModification() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[22]")).click();
+  }
+
+  public int getUserCount() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 }

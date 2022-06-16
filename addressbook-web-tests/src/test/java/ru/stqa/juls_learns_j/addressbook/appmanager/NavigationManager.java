@@ -17,10 +17,12 @@ public class NavigationManager extends GroupHelper {
     }
     click(By.linkText("groups"));
   }
+
   public void goToHomePage(){
     if (isElementPresent(By.id("maintable"))){
       return;
     }
     click(By.linkText("home"));
   }
+
 }

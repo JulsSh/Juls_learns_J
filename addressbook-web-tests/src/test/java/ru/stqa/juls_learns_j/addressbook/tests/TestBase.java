@@ -7,7 +7,7 @@ import ru.stqa.juls_learns_j.addressbook.appmanager.ApplicationManager;
 
 public class TestBase {
 
-  public  ApplicationManager app = new ApplicationManager(BrowserType.CHROME);
+  public  ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
 
   @BeforeMethod(alwaysRun = true)
   public void setUp() throws Exception {
@@ -17,8 +17,7 @@ public class TestBase {
   @AfterMethod(alwaysRun = true)
   public void tearDown()  {
     app.logout();
-    app.stop();
-  }
+      }
 
   public ApplicationManager getApp() {
     return app;

@@ -78,4 +78,8 @@ public class GroupHelper extends HeplperBase{
     }
     return groups;
   }
+  public int getUserCount() {
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
 }
