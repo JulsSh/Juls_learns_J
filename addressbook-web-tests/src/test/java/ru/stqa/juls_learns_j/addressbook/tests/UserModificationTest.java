@@ -8,16 +8,15 @@ import java.util.Comparator;
 import java.util.List;
 
 public class UserModificationTest extends TestBase{
-  @Test(enabled = false)
+  @Test
   public void  modifyUser(){
-    app.getUserHelper().gotoUsers();
+    app.goTo().goToHomePage();
     List<UserData> before =app.getUserHelper().getUserList();
     if(!app.getUserHelper().isThereAUser()){
 
       app.getUserHelper().createNewUser(new UserData("Julia",
               "SH","k","hh","zu","op",
-              "Ta","123","123","98",null
-              ));
+              "Ta","123","123","98",null));
     }
     app.goTo().goToHomePage();
     app.getUserHelper().selectUser(before.size()-1);
@@ -25,10 +24,10 @@ public class UserModificationTest extends TestBase{
     UserData user =new UserData(before.get(before.size()-1).getId(),"JulsHHH", "jennifer", "juli",
             "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C",
             "012345", "1791028611", "010 345845",
-            "");
+            "[none]");
     app.getUserHelper().fillUserDetails(user, false);
     app.getUserHelper().submitUserModification();
-    app.getUserHelper().gotoUsers();
+    app.goTo().goToHomePage();
     List<UserData> after =app.getUserHelper().getUserList();
     Assert.assertEquals(after.size(),before.size());
 

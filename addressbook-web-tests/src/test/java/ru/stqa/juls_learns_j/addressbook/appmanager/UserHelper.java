@@ -1,5 +1,6 @@
 package ru.stqa.juls_learns_j.addressbook.appmanager;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -63,7 +64,22 @@ public class UserHelper extends HeplperBase {
   public void deleteSelectedUser() {
     boolean acceptNextAlert = true;
     wd.findElement(By.xpath("//input[@value='Delete']")).click();
-    //assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+    assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
+  }
+  protected String closeAlertAndGetItsText() {
+    boolean acceptNextAlert = true;
+    try {
+      Alert alert = wd.switchTo().alert();
+      String alertText = alert.getText();
+      if (acceptNextAlert) {
+        alert.accept();
+      } else {
+        alert.dismiss();
+      }
+      return alertText;
+    } finally {
+      acceptNextAlert = true;
+    }
   }
   public void acceptAlert(){
     wd.switchTo().alert().accept();
@@ -93,7 +109,8 @@ public void submitUserModification() {
       String FirstNname =element.findElement(By.xpath(".//td[3]")).getText();
       String LastNname=element.findElement(By.xpath(".//td[2]")).getText();
       int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      UserData user =new UserData(id, FirstNname, "test1", LastNname, "nick3", "title4", "company 5", "address6", "123", "124", "126", "[none]");
+      UserData user =new UserData(id, FirstNname, null, LastNname, null, null, null,
+              null, null, null, null, null);
       users.add(user);
     }
     return users;

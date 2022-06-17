@@ -42,19 +42,5 @@ public class HeplperBase {
 
   }
 
-  protected String closeAlertAndGetItsText() {
-    boolean acceptNextAlert = true;
-    try {
-      Alert alert = wd.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
-  }
+
 }

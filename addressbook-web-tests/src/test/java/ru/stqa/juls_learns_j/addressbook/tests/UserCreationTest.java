@@ -11,16 +11,16 @@ import java.util.List;
 public class UserCreationTest extends TestBase {
 
 
-  @Test (enabled = false)
+  @Test
   public void testUserCreation() throws Exception {
-    app.getUserHelper().gotoUsers();
+    app.goTo().goToHomePage();
     List<UserData> before =app.getUserHelper().getUserList();
     UserData user =new UserData( "JulsHHH", "jennifer", "juli", "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C","012345", "1791028611", "010 345845",
             "[none]");
     app.getUserHelper().initUserCreation();
     app.getUserHelper().fillUserDetails(user, true);
     app.getUserHelper().submitUserCreation();
-    app.getUserHelper().gotoUsers();
+    app.goTo().goToHomePage();
     List<UserData> after =app.getUserHelper().getUserList();
     Assert.assertEquals(after.size(),before.size()+1);
   user.setId(after.stream().max((o1, o2) -> Integer.compare((o1.getId()),o2.getId())).get().getId());
