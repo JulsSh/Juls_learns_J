@@ -1,12 +1,18 @@
 package ru.stqa.juls_learns_j.addressbook.tests;
 
+import org.hamcrest.CoreMatchers;
+import org.hamcrest.MatcherAssert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.juls_learns_j.addressbook.model.GroupData;
+import ru.stqa.juls_learns_j.addressbook.model.Groups;
 
-import java.util.List;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.*;
+import static org.testng.Assert.*;
 
 public class GroupDeletionTest extends TestBase {
   @BeforeMethod
@@ -19,18 +25,13 @@ public class GroupDeletionTest extends TestBase {
   @Test
   public void testDeleteGroup() throws Exception {
 
-    Set<GroupData> before=app.group().all();
+    Groups before=app.group().all();
     GroupData deletedGroup =before.iterator().next();
     app.group().delete(deletedGroup);
-    Set<GroupData> after=app.group().all();
-    app.goTo().groupPage();
-    //Assert.assertEquals(after.size(), before.size() -1);
-    before.remove(deletedGroup);
-    Assert.assertEquals(before,after);
-
+    Groups after=app.group().all();
+    assertEquals(after.size(), before.size() -1);
+    assertThat(after, equalTo(after.withoutAdded(deletedGroup)));
     }
-
-
 }
 
 
