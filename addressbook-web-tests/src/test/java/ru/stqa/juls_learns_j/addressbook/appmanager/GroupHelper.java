@@ -4,9 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.juls_learns_j.addressbook.model.GroupData;
-
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends HeplperBase{
 
@@ -36,9 +36,9 @@ public class GroupHelper extends HeplperBase{
     click(By.xpath("//div[@id='content']/form/input[5]"));
   }
 
-  public void selectGroup(int index) {
-    //wd.findElements(By.name("selected[]")).get(index).click();
-    click(By.name("selected[]"));
+  public void selectGroupbyId(int id) {
+    wd.findElement(By.cssSelector("input[value='" +id  + "']")).click();
+
   }
 
   public void initGroupModification() {
@@ -57,15 +57,16 @@ public class GroupHelper extends HeplperBase{
    submitGroupCreation();
    returnToGroupPage();
   }
-  public void modify(int index, GroupData group) {
-    selectGroup(index);
+  public void modify( GroupData group) {
+    selectGroupbyId(group.getId());
     initGroupModification();
     fillGroupInfo(group);
     submitGroupModification();
     returnToGroupPage();
+
   }
-  public void delete(int index) {
-    selectGroup(index);
+  public void delete(GroupData group) {
+    selectGroupbyId(group.getId());
     deleteSelectedGroups();
     returnToGroupPage();
   }
@@ -78,8 +79,9 @@ public class GroupHelper extends HeplperBase{
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupData> list() {
-    List<GroupData> groups =new ArrayList<GroupData>();
+
+  public Set<GroupData> all() {
+    Set<GroupData> groups =new HashSet<GroupData>();
     List<WebElement> elements =wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
@@ -91,5 +93,6 @@ public class GroupHelper extends HeplperBase{
   public int getUserCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
+
 
 }
