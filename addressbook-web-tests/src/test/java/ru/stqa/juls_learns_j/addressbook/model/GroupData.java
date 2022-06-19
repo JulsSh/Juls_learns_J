@@ -3,26 +3,30 @@ package ru.stqa.juls_learns_j.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-  private  int id;
+  private int id= Integer.MAX_VALUE;
   public  String groupName;
   public  String groupHeader;
   public  String groupFooter;
 
-  public GroupData(int id, String groupName, String groupHeader, String groupFooter) {
-    this.groupName = groupName;
-    this.groupHeader = groupHeader;
-    this.groupFooter = groupFooter;
+
+  public GroupData withId(int id) {
     this.id = id;
-  }
-  public GroupData( String groupName, String groupHeader, String groupFooter) {
-    this.groupName = groupName;
-    this.groupHeader = groupHeader;
-    this.groupFooter = groupFooter;
-    this.id = Integer.MAX_VALUE;
+    return this;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public GroupData withGroupName(String groupName) {
+    this.groupName = groupName;
+    return this;
+  }
+
+  public GroupData withGroupHeader(String groupHeader) {
+    this.groupHeader = groupHeader;
+    return this;
+  }
+
+  public GroupData withGroupFooter(String groupFooter) {
+    this.groupFooter = groupFooter;
+    return this;
   }
 
   public int getId() {
