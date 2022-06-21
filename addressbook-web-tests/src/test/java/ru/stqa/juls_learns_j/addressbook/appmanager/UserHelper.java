@@ -34,14 +34,14 @@ public class UserHelper extends HeplperBase {
 
     if (creation) {
       if(!wd.findElement(By.name("new_group")).getAttribute("value").equals("none")){
-        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(userData.getGroup());
+        new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
       }
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
   public void submitUserCreation(){
-    click(By.xpath("//div[@id='content']/form/input[21]"));
+    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
   }
 
   public void gotoUsers() {
@@ -58,6 +58,10 @@ public class UserHelper extends HeplperBase {
   public void deleteSelectedUser() {
     boolean acceptNextAlert = true;
     wd.findElement(By.xpath("//input[@value='Delete']")).click();
+
+  }
+
+  public void submitUserDeletion(){
     assertTrue(closeAlertAndGetItsText().matches("^Delete 1 addresses[\\s\\S]$"));
   }
 
