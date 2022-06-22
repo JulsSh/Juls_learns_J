@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.juls_learns_j.addressbook.model.UserData;
-
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.testng.Assert.assertTrue;
 
@@ -18,7 +18,6 @@ public class UserHelper extends HeplperBase {
   public UserHelper(WebDriver wd) {
     super(wd);
   }
-
 
   public void initUserCreation()  {
     click(By.linkText("add new"));
@@ -57,8 +56,8 @@ public class UserHelper extends HeplperBase {
     wd.findElement(By.xpath("//img[@alt='Edit']")).click();
   }
 
-  public void selectUser(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public void selectUserbyId(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id +"']")).click();
   }
 
   public void deleteSelectedUser() {
@@ -96,19 +95,20 @@ public class UserHelper extends HeplperBase {
   }
 
 
-  public void modify(int i, UserData user) {
+  public void modify( UserData user) {
     gotoUsers();
-    selectUser(i);
+    selectUserbyId(user.getId());
     editSelectedUser();
     fillUserDetails(user, false);
     submitUserModification();
     gotoUsers();
   }
 
-  public void delete(int i) {
-    selectUser(i);
+  public void delete(UserData delUser) {
+    selectUserbyId(delUser.getId());
     deleteSelectedUser();
     gotoUsers();
+
   }
 public void submitUserModification() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[22]")).click();
@@ -118,14 +118,15 @@ public void submitUserModification() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<UserData> list() {
-    List<UserData> users = new ArrayList<UserData>();
+
+  public Set<UserData> all() {
+    Set<UserData> users = new HashSet<UserData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
     for (WebElement element: elements){
       String FirstNname =element.findElement(By.xpath(".//td[3]")).getText();
       String LastNname=element.findElement(By.xpath(".//td[2]")).getText();
       int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      users.add(new UserData().withId(id).withFName(FirstNname).withLName(LastNname));
+      users.add(new ru.stqa.juls_learns_j.addressbook.model.UserData().withId(id).withFName(FirstNname).withLName(LastNname));
     }
     return users;
   }

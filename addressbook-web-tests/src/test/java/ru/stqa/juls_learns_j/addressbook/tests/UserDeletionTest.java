@@ -6,11 +6,12 @@ import org.testng.annotations.Test;
 import ru.stqa.juls_learns_j.addressbook.model.UserData;
 
 import java.util.List;
+import java.util.Set;
 
 public class UserDeletionTest extends TestBase{
   @BeforeMethod
   public void ensurePreconditions(){
-    if(app.user().list().size()==0){
+    if(app.user().all().size()==0){
       app.user().create(new UserData().withFName("Julia"));
     }
   }
@@ -18,12 +19,12 @@ public class UserDeletionTest extends TestBase{
   @Test
   public void  deleteUser(){
     app.goTo().goToHomePage();
-    List<UserData> before =app.user().list();
-    int i=before.size()-1;
-    app.user().delete(i);
-    List<UserData> after =app.user().list();
+    Set<UserData> before =app.user().all();
+    UserData delUser=before.iterator().next();
+    app.user().delete(delUser);
+    Set<UserData> after =app.user().all();
     Assert.assertEquals(after.size(),before.size()-1);
-    before.remove(i);
+    before.remove(delUser);
     Assert.assertEquals(before, after);
 
     }
