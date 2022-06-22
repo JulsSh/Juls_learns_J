@@ -89,10 +89,26 @@ public class UserHelper extends HeplperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public void createNewUser(UserData user) {
+  public void create(UserData user) {
     initUserCreation();
     fillUserDetails(user, true);
     submitUserCreation();
+  }
+
+
+  public void modify(int i, UserData user) {
+    gotoUsers();
+    selectUser(i);
+    editSelectedUser();
+    fillUserDetails(user, false);
+    submitUserModification();
+    gotoUsers();
+  }
+
+  public void delete(int i) {
+    selectUser(i);
+    deleteSelectedUser();
+    gotoUsers();
   }
 public void submitUserModification() {
     wd.findElement(By.xpath("//div[@id='content']/form/input[22]")).click();
@@ -102,7 +118,7 @@ public void submitUserModification() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<UserData> getUserList() {
+  public List<UserData> list() {
     List<UserData> users = new ArrayList<UserData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name=entry]"));
     for (WebElement element: elements){
@@ -115,4 +131,5 @@ public void submitUserModification() {
     }
     return users;
   }
+
 }

@@ -57,7 +57,7 @@ public class ApplicationManager {
     return navigationManager;
   }
 
-  public UserHelper getUserHelper() {
+  public UserHelper user() {
     return userHelper;
   }
 

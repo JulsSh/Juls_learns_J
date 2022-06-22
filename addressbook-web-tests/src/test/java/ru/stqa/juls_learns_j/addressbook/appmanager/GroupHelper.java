@@ -67,6 +67,7 @@ public class GroupHelper extends HeplperBase{
     returnToGroupPage();
 
   }
+
   public void delete(GroupData group) {
     selectGroupbyId(group.getId());
     deleteSelectedGroups();
