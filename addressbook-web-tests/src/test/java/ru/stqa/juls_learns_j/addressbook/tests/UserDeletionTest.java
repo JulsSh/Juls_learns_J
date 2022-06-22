@@ -9,7 +9,10 @@ public class UserDeletionTest extends TestBase{
   public void  deleteUser(){
     app.getUserHelper().gotoUsers();
     if(!app.getUserHelper().isThereAUser()) {
-      app.getUserHelper().createNewUser( new UserData("Juls", "jennifer", "juli", "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C", "012345", "1791028611", "010 345845", "test1"));
+      app.getUserHelper().createNewUser( new UserData("Juls", "jennifer",
+              "juli", "jiliian", "senior QA", "LucanetAG",
+              "Tabberstr 6C", "012345", "1791028611",
+              "010 345845", "[none]"));
     }
     app.getNavigationManager().goToHomePage();
     app.getUserHelper().selectUser();

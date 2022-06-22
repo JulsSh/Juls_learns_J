@@ -16,7 +16,7 @@ public class UserCreationTest extends TestBase {
     app.getUserHelper().fillUserDetails(new UserData("JulsHHH", "jennifer", "juli",
             "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C",
             "012345", "1791028611", "010 345845",
-                        "test1"), true);
+                        "[none]"), true);
     app.getUserHelper().submitUserCreation();
   }
 }
