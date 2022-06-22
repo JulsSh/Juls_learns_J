@@ -3,58 +3,76 @@ package ru.stqa.juls_learns_j.addressbook.model;
 import java.util.Objects;
 
 public class UserData {
+  private  int id=Integer.MAX_VALUE;;
+  private  String firstName;
+  private  String middleName;
+  private String group;
+  private  String lastName;
+  private String nickname;
+  private  String title;
+  private  String company;
+  private String address;
+  private  String hoPhoneNum;
+  private  String mobileNumber;
+  private String workNumber;
 
-
-  public void setId(int id) {
+  public UserData withId(int id) {
     this.id = id;
+    return this;
+  }
+  public UserData withFName(String firstName) {
+    this.firstName = firstName;
+    return this;
   }
 
-  private  int id;
-  private final String firstName;
-  private final String middleName;
-  private final String group;
-  private final String lastName;
-  private final String nickname;
-  private final String title;
-  private final String company;
-  private final String address;
-  private final String hoPhoneNum;
-  private final String mobileNumber;
-  private final String workNumber;
-
-
-  public UserData(int id, String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String hoPhoneNum, String mobileNumber, String workNumber, String group) {
-    this.id = id;
-    this.firstName = firstName;
+  public UserData withMName(String middleName) {
     this.middleName = middleName;
-    this.group = group;
-    this.lastName = lastName;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.hoPhoneNum = hoPhoneNum;
-    this.mobileNumber = mobileNumber;
-    this.workNumber = workNumber;
-
+    return this;
   }
 
-
-
-  public UserData(String firstName, String middleName, String lastName, String nickname, String title, String company, String address, String hoPhoneNum, String mobileNumber, String workNumber, String group) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.middleName = middleName;
+  public UserData withGroup(String group) {
     this.group = group;
-    this.lastName = lastName;
-    this.nickname = nickname;
-    this.title = title;
-    this.company = company;
-    this.address = address;
-    this.hoPhoneNum = hoPhoneNum;
-    this.mobileNumber = mobileNumber;
-    this.workNumber = workNumber;
+    return this;
+  }
 
+  public UserData withLName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public UserData withNick(String nickname) {
+    this.nickname = nickname;
+    return this;
+  }
+
+  public UserData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public UserData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public UserData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public UserData withHomeNum(String hoPhoneNum) {
+    this.hoPhoneNum = hoPhoneNum;
+    return this;
+  }
+
+  public UserData withMobileNum(String mobileNumber) {
+    this.mobileNumber = mobileNumber;
+    return this;
+  }
+
+  public UserData withWorkNum(String workNumber) {
+    this.workNumber = workNumber;
+    return this;
   }
 
   public String getFirstName() {

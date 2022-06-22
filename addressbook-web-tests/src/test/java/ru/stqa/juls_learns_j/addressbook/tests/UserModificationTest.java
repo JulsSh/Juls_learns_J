@@ -12,9 +12,7 @@ public class UserModificationTest extends TestBase{
   @BeforeMethod
   public void ensurePreconditions(){
     if(app.user().list().size()==0){
-      app.user().create(new UserData("Julia",
-              "SH","k","hh","zu","op",
-              "Ta","123","123","98",null));
+      app.user().create(new UserData().withFName("Julia"));
     }
   }
   @Test
@@ -22,11 +20,7 @@ public class UserModificationTest extends TestBase{
     app.goTo().goToHomePage();
     List<UserData> before =app.user().list();
     int i=before.size()-1;
-    UserData user =new UserData(before.get(i).getId(),"JulsHHH", "jennifer", "juli",
-            "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C",
-            "012345", "1791028611", "010 345845",
-            "[none]");
-
+    UserData user =new UserData().withId(before.get(i).getId()).withFName("JulsHHH").withLName("juli").withGroup("[none]");
     app.user().modify(i, user);
     List<UserData> after =app.user().list();
     Assert.assertEquals(after.size(),before.size());

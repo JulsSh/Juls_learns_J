@@ -14,15 +14,13 @@ public class UserCreationTest extends TestBase {
   public void testUserCreation() throws Exception {
     app.goTo().goToHomePage();
     List<UserData> before =app.user().list();
-    UserData user =new UserData( "JulsHHH", "jennifer", "juli", "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C","012345", "1791028611", "010 345845",
-            "[none]");
+    UserData user =new UserData().withFName("JulsHHH").withLName("juli");
     app.user().create(user);
     app.goTo().goToHomePage();
     List<UserData> after =app.user().list();
     Assert.assertEquals(after.size(),before.size()+1);
-    user.setId(after.stream().max((o1, o2) -> Integer.compare((o1.getId()),o2.getId())).get().getId());
+    user.withId(after.stream().max((o1, o2) -> Integer.compare((o1.getId()),o2.getId())).get().getId());
     before.add(user);
-
     Comparator<? super UserData> byId = (u1,u2) -> Integer.compare(u1.getId(), u2.getId() );
     before.sort(byId);
     after.sort(byId);

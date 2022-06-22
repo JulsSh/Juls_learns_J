@@ -11,9 +11,7 @@ public class UserDeletionTest extends TestBase{
   @BeforeMethod
   public void ensurePreconditions(){
     if(app.user().list().size()==0){
-      app.user().create(new UserData("Julia",
-              "SH","k","hh","zu","op",
-              "Ta","123","123","98",null));
+      app.user().create(new UserData().withFName("Julia"));
     }
   }
 
@@ -21,9 +19,6 @@ public class UserDeletionTest extends TestBase{
   public void  deleteUser(){
     app.goTo().goToHomePage();
     List<UserData> before =app.user().list();
-    UserData user =new UserData( "JulsHHH", null, "juli", null,
-            null, null, null,null, null,
-            null, null);
     int i=before.size()-1;
     app.user().delete(i);
     List<UserData> after =app.user().list();

@@ -125,9 +125,7 @@ public void submitUserModification() {
       String FirstNname =element.findElement(By.xpath(".//td[3]")).getText();
       String LastNname=element.findElement(By.xpath(".//td[2]")).getText();
       int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      UserData user =new UserData(id, FirstNname, null, LastNname, null, null, null,
-              null, null, null, null, null);
-      users.add(user);
+      users.add(new UserData().withId(id).withFName(FirstNname).withLName(LastNname));
     }
     return users;
   }
