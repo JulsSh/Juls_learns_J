@@ -127,8 +127,12 @@ public void submitUserModification() {
     for (WebElement element: elements){
       String FirstNname =element.findElement(By.xpath(".//td[3]")).getText();
       String LastNname=element.findElement(By.xpath(".//td[2]")).getText();
+      String allPhones= element.findElement(By.xpath(".//td[6]")).getText();
+      String[] phones = allPhones.split("\n");
+
       int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      users.add(new ru.stqa.juls_learns_j.addressbook.model.UserData().withId(id).withFName(FirstNname).withLName(LastNname));
+      users.add(new UserData().withId(id).withFName(FirstNname).withLName(LastNname).
+              withHomeNum(phones[0]).withWorkNum(phones[2]).withMobileNum(phones[1]));
     }
     return users;
   }
@@ -141,8 +145,8 @@ public void submitUserModification() {
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work= wd.findElement(By.name("work")).getAttribute("value");
     wd.navigate().back();
-    return new UserData().withId(user.getId()).withFName(firstName).withLName(lastName).withMobileNum(mobile).
-            withWorkNum(work);
+    return new UserData().withId(user.getId()).withLName(lastName).withFName(firstName).withHomeNum(home)
+    .withMobileNum(mobile).withWorkNum(work);
   }
   private void initUserModificationById(int id){
     WebElement checkbox =wd.findElement(By.cssSelector(String.format("input[value= '%s']", id)));
