@@ -132,7 +132,7 @@ public void submitUserModification() {
 
       int id= Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       users.add(new UserData().withId(id).withFName(FirstNname).withLName(LastNname).
-              withHomeNum(phones[0]).withWorkNum(phones[2]).withMobileNum(phones[1]));
+              withAllPhones(allPhones));
     }
     return users;
   }

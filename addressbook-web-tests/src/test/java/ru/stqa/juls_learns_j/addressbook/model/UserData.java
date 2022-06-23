@@ -15,8 +15,16 @@ public class UserData {
   private  String hoPhoneNum;
   private  String mobileNumber;
   private String workNumber;
+  private String allPhones;
 
-  public UserData withId(int id) {
+  public String getAllPhones() {
+    return allPhones;
+  }
+  public UserData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+ public UserData withId(int id) {
     this.id = id;
     return this;
   }
