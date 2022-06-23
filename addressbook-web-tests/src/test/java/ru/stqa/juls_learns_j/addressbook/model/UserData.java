@@ -16,10 +16,31 @@ public class UserData {
   private  String mobileNumber;
   private String workNumber;
   private String allPhones;
+  private String email;
+  private String email2;
+  private String email3;
+  private String allEmails;
 
-  public String getAllPhones() {
-    return allPhones;
+  public UserData withEmail(String email) {
+    this.email = email;
+    return this;
   }
+
+  public UserData withEmail2(String email2) {
+    this.email2 = email2;
+    return this;
+  }
+
+  public UserData withEmail3(String email3) {
+    this.email3 = email3;
+    return this;
+  }
+
+  public UserData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
   public UserData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
@@ -88,67 +109,72 @@ public class UserData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     UserData userData = (UserData) o;
-    return id == userData.id && Objects.equals(firstName, userData.firstName) && Objects.equals(lastName, userData.lastName);
+    return id == userData.id && Objects.equals(firstName, userData.firstName) && Objects.equals(lastName, userData.lastName) && Objects.equals(address, userData.address) && Objects.equals(hoPhoneNum, userData.hoPhoneNum) && Objects.equals(mobileNumber, userData.mobileNumber) && Objects.equals(workNumber, userData.workNumber) && Objects.equals(allPhones, userData.allPhones) && Objects.equals(email, userData.email) && Objects.equals(email2, userData.email2) && Objects.equals(email3, userData.email3) && Objects.equals(allEmails, userData.allEmails);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, firstName, lastName);
+    return Objects.hash(id, firstName, lastName, address, hoPhoneNum, mobileNumber, workNumber, allPhones, email, email2, email3, allEmails);
   }
 
-  public String getFirstName() {
-    return firstName;
-  }
-
-  public String getMiddleName() {
-    return middleName;
-  }
-
-  public String getLastName() {
-    return lastName;
-  }
-
-  public String getNickname() {
-    return nickname;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public String getCompany() {
-    return company;
-  }
-
-  public String getAddress() {
-    return address;
-  }
-
-  public String getHoPhoneNum() {
-    return hoPhoneNum;
-  }
-
-  public String getMobileNumber() {
-    return mobileNumber;
-  }
-
-  public String getWorkNumber() {
-    return workNumber;
-  }
-
-  public String getGroup() {
-    return group;
-  }
-  public int getId() {
-    return id;
-  }
   @Override
   public String toString() {
     return "UserData{" +
             "id=" + id +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", address='" + address + '\'' +
+            ", hoPhoneNum='" + hoPhoneNum + '\'' +
+            ", mobileNumber='" + mobileNumber + '\'' +
+            ", workNumber='" + workNumber + '\'' +
+            ", allPhones='" + allPhones + '\'' +
+            ", email='" + email + '\'' +
+            ", email2='" + email2 + '\'' +
+            ", email3='" + email3 + '\'' +
+            ", allEmails='" + allEmails + '\'' +
             '}';
   }
+
+  public String getFirstName() {
+    return firstName;
+  }
+  public String getMiddleName() {
+    return middleName;
+  }
+  public String getLastName() {
+    return lastName;
+  }
+  public String getNickname() {
+    return nickname;
+  }
+  public String getTitle() {
+    return title;
+  }
+  public String getCompany() {
+    return company;
+  }
+  public String getAddress() {
+    return address;
+  }
+  public String getHoPhoneNum() {
+    return hoPhoneNum;
+  }
+  public String getMobileNumber() {
+    return mobileNumber;
+  }
+  public String getWorkNumber() {
+    return workNumber;
+  }
+  public String getGroup() {
+    return group;
+  }
+  public int getId() {
+    return id;
+  }
+  public String getAllPhones() {    return allPhones;  }
+  public String getEmail() { return email;  }
+  public String getEmail2() {    return email2;  }
+  public String getEmail3() {    return email3;  }
+  public String getAllEmails() {    return allEmails;  }
 
 }
