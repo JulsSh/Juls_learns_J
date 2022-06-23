@@ -5,10 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import ru.stqa.juls_learns_j.addressbook.model.GroupData;
 import ru.stqa.juls_learns_j.addressbook.model.Groups;
-
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 public class GroupHelper extends HeplperBase{
 
@@ -40,7 +38,6 @@ public class GroupHelper extends HeplperBase{
 
   public void selectGroupbyId(int id) {
     wd.findElement(By.cssSelector("input[value='" +id  + "']")).click();
-
   }
 
   public void initGroupModification() {
@@ -53,7 +50,6 @@ public class GroupHelper extends HeplperBase{
 
 
   public void create(GroupData group) {
-
    initGroupCreation();
    fillGroupInfo(group);
    submitGroupCreation();
@@ -81,7 +77,7 @@ public class GroupHelper extends HeplperBase{
   }
 
 
-  public int getGroupCount() {
+  public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
 private Groups groupCache=null;
