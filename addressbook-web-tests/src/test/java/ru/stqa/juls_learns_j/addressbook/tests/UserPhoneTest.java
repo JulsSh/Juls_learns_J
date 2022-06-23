@@ -1,15 +1,8 @@
 package ru.stqa.juls_learns_j.addressbook.tests;
-
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
 import org.testng.annotations.Test;
 import ru.stqa.juls_learns_j.addressbook.model.UserData;
-
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.stream.Collectors;
-
-import static java.util.stream.Collectors.joining;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
 
