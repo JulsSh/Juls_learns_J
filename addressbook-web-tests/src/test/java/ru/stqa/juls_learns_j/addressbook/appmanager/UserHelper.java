@@ -36,7 +36,7 @@ public class UserHelper extends HeplperBase {
     type(By.name("address"), userData.getAddress());
     type(By.name("home"), userData.getHoPhoneNum());
     type(By.name("mobile"), userData.getMobileNumber());
-    type(By.name("work"), userData.getWorkNumber());
+    attach(By.name("photo"), userData.getPhoto());
 
     if (creation) {
       if(!wd.findElement(By.name("new_group")).getAttribute("value").equals("none")){

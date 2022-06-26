@@ -1,5 +1,6 @@
 package ru.stqa.juls_learns_j.addressbook.model;
 
+import java.io.File;
 import java.util.Objects;
 
 public class UserData {
@@ -20,6 +21,17 @@ public class UserData {
   private String email2;
   private String email3;
   private String allEmails;
+
+  public UserData withPhoto(File photo) {
+    this.photo = photo;
+    return this;
+  }
+
+  public File getPhoto() {
+    return photo;
+  }
+
+  private File photo;
 
   public UserData withEmail(String email) {
     this.email = email;
