@@ -53,7 +53,7 @@ public class UserHelper extends HeplperBase {
     wd.findElement(By.linkText("home")).click();
   }
 
-  public void editSelectedUser(){
+  public void editSelectedUser(int i){
     wd.findElement(By.xpath("//img[@alt='Edit']")).click();
   }
 
