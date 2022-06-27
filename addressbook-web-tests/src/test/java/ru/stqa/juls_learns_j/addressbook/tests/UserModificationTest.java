@@ -14,7 +14,7 @@ public class UserModificationTest extends TestBase{
               ));
     }
 app.getNavigationManager().goToHomePage();
-app.getUserHelper().selectUser();
+//app.getUserHelper().selectUser();
     app.getUserHelper().editSelectedUser();
     app.getUserHelper().fillUserDetails(new UserData("222edited edit2", "222juls jennifer edit",
             "Birkin", "edit", "jiliianedit", "Zatoo", "alexanderplatz",

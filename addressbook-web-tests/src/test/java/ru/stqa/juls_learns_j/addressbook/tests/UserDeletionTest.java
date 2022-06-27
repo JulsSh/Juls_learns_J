@@ -12,7 +12,7 @@ public class UserDeletionTest extends TestBase{
       app.getUserHelper().createNewUser( new UserData("Juls", "jennifer",
               "juli", "jiliian", "senior QA", "LucanetAG",
               "Tabberstr 6C", "012345", "1791028611",
-              "010 345845", "[none]"));
+              "010 345845", null));
     }
     app.getNavigationManager().goToHomePage();
     app.getUserHelper().selectUser();
