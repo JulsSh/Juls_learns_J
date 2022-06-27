@@ -20,7 +20,7 @@ public class UserModificationTest extends TestBase{
     }
     app.goTo().goToHomePage();
     //app.getUserHelper().selectUser(before.size()-1);
-    app.getUserHelper().editSelectedUser();
+    app.getUserHelper().editSelectedUser(before.size()-1);
     UserData user =new UserData(before.get(before.size()-1).getId(),"JulsHHH", "jennifer", "juli",
             "jiliian", "senior QA", "LucanetAG", "Tabberstr 6C",
             "012345", "1791028611", "010 345845",
