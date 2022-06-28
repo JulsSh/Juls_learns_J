@@ -1,8 +1,13 @@
 package ru.stqa.juls_learns_j.addressbook.model;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import java.util.ArrayList;
 import java.util.Objects;
 
+@XStreamAlias("group")
 public class GroupData {
+  @XStreamOmitField
   private int id= Integer.MAX_VALUE;
   public  String groupName;
   public  String groupHeader;
@@ -50,12 +55,12 @@ public class GroupData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     GroupData groupData = (GroupData) o;
-    return id == groupData.id && Objects.equals(groupName, groupData.groupName);
+    return id == groupData.id && Objects.equals(groupName, groupData.groupName) && Objects.equals(groupHeader, groupData.groupHeader) && Objects.equals(groupFooter, groupData.groupFooter);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, groupName);
+    return Objects.hash(id, groupName, groupHeader, groupFooter);
   }
 
   @Override

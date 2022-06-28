@@ -1,4 +1,5 @@
 package ru.stqa.juls_learns_j.addressbook.tests;
+import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.*;
 
 import ru.stqa.juls_learns_j.addressbook.model.GroupData;
@@ -8,6 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -15,21 +17,23 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class CreateGroupTest extends TestBase {
   @DataProvider
   public Iterator<Object[]> validGroups() throws IOException {
-    List<Object[]>list= new ArrayList<Object[]>();
 
-    BufferedReader reader=new BufferedReader(new FileReader(new File("src/test/resources/groups.csv")));
+    BufferedReader reader=new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")));
+    String xml="";
     String line =reader.readLine();
 while (line !=null){
-  String[] split =line.split(";");
-  list.add(new Object[]{new GroupData().withGroupName(split[0]).withGroupHeader(split[1]).withGroupFooter(split[2])});
+  xml += line;
   line=reader.readLine();
 }
-    return list.iterator();
+    XStream xstream= new XStream();
+  List<GroupData> groups=(List<GroupData>) xstream.fromXML(xml);
+  return groups.stream().map((g) -> new Object[] {g}).collect(Collectors.toList()).iterator();
   }
 
   @Test(dataProvider="validGroups")
+
   public void testCreateGroup(GroupData group) throws Exception {
-String[] names =new String[] {"test1", "test2","test3"};
+String[] names =new String[] {"test", "test1","test2"};
 
           app.goTo().groupPage();
           Groups before=app.group().all();
@@ -42,7 +46,7 @@ String[] names =new String[] {"test1", "test2","test3"};
 
 
     }
-  @Test (enabled = false)
+  @Test(enabled = false)
   public void testBadCreateGroup() throws Exception {
 
     app.goTo().groupPage();

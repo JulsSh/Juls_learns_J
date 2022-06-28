@@ -29,7 +29,7 @@ public class GroupHelper extends HeplperBase{
   }
 
   public void initGroupCreation() {
-    click(By.name("new"));
+    click(By.xpath("//input[@name='new']"));
   }
 
   public void deleteSelectedGroups() {
