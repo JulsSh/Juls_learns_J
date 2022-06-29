@@ -1,17 +1,23 @@
 package ru.stqa.juls_learns_j.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+
 import java.io.File;
 import java.util.Objects;
-
+@XStreamAlias("user")
 public class UserData {
-  private  int id=Integer.MAX_VALUE;;
+  private  int id=Integer.MAX_VALUE;
+  @Expose
   private  String firstName;
   private  String middleName;
   private String group;
+  @Expose
   private  String lastName;
   private String nickname;
   private  String title;
   private  String company;
+  @Expose
   private String address;
   private  String hoPhoneNum;
   private  String mobileNumber;
